@@ -1,13 +1,12 @@
-
 services:
   web:
-    image: nginx:alpine
-    container_name: empresa-site
+    image: nginx
+    container_name: saudeflow-site
     restart: unless-stopped
     ports:
       - "20008:80"
     volumes:
-      - ./site:/usr/share/nginx/html  # Diretório modificado
+      - ./site:/usr/share/nginx/html  # Monta o diretório local ./site no diretório padrão do Nginx
     networks:
       - app_network
 

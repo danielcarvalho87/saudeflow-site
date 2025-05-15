@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:alpine
+    container_name: empresa-site
+    restart: unless-stopped
+    ports:
+      - "20008:80"
+    volumes:
+      - ./seu-site:/usr/share/nginx/html
+    networks:
+      - site-network
+
+networks:
+  site-network:
+    driver: bridge

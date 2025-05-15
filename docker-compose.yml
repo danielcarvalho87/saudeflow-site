@@ -10,7 +10,7 @@ services:
     volumes:
       - ./seu-site:/usr/share/nginx/html
     networks:
-      - site-network
+      - app_network
 
 networks:
   site-network:

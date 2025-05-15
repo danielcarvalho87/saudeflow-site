@@ -3,7 +3,7 @@ version: '3.8'
 services:
   web:
     image: nginx:alpine
-    container_name: empresa-site
+    container_name: saudeflow-site
     restart: unless-stopped
     ports:
       - "20008:80"
@@ -13,5 +13,5 @@ services:
       - app_network
 
 networks:
-  site-network:
+  app_network:
     driver: bridge

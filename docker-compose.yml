@@ -2,7 +2,7 @@ services:
   web:
     image: nginx:alpine
     ports:
-      - "20008:80"
+      - "20009:80"
     volumes:
       - ./site:/usr/share/nginx/html
     deploy:

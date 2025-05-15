@@ -1,14 +1,13 @@
-version: '3.8'
 
 services:
   web:
     image: nginx:alpine
-    container_name: saudeflow-site
+    container_name: empresa-site
     restart: unless-stopped
     ports:
       - "20008:80"
     volumes:
-      - ./seu-site:/usr/share/nginx/html
+      - ./site:/usr/share/nginx/html  # Diretório modificado
     networks:
       - app_network
 

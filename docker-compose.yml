@@ -3,7 +3,7 @@ version: "3.8"
 services:
   static-site:
     image: busybox:latest
-    container_name: empresa-static-content
+    container_name: saudeflow-site
     command: /bin/httpd -f -p 8080 -h /www
     volumes:
       - ./site:/www:ro

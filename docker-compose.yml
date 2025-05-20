@@ -3,15 +3,12 @@ version: "3.8"
 services:
   static-site:
     image: busybox:latest
-    container_name: saudeflow-site
     command: /bin/httpd -f -p 8080 -h /www
     volumes:
       - ./site:/www:ro
-    networks:
-      - app_network
-    deploy:
-      restart_policy:
-        condition: any
+    restart: always
+    ports:
+      - "20009:8080"
 
 networks:
   app_network:

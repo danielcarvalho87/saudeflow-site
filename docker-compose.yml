@@ -1,17 +1,17 @@
 version: "3.8"
 
 services:
-  web:
-    image: nginx:alpine
-    ports:
-      - "20009:80"
+  static-site:
+    image: busybox:latest
+    container_name: empresa-static-content
+    command: /bin/httpd -f -p 8080 -h /www
     volumes:
-      - ./site:/usr/share/nginx/html:ro
+      - ./site:/www:ro
+    networks:
+      - app_network
     deploy:
       restart_policy:
         condition: any
-    networks:
-      - app_network
 
 networks:
   app_network:

@@ -1,15 +1,22 @@
-version: "3.8"
+version: '3.8'
 
 services:
-  static-site:
-    image: busybox:latest
-    command: /bin/httpd -f -p 8080 -h /www
-    volumes:
-      - ./site:/www:ro
-    restart: always
+  web:
+    image: nginx:latest
+    container_name: saudeflow-site
+    restart: unless-stopped
     ports:
-      - "20009:8080"
+      - "20009:80"
+    volumes:
+      - ./site:/usr/share/nginx/html
+    networks:
+      - site_network
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 networks:
-  app_network:
-    driver: overlay
+  site_network:
+    driver: bridge

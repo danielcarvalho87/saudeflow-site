@@ -2,10 +2,9 @@ version: '3.8'
 
 services:
   web:
-    image: danielcarvalho/site-saudeflow:latest  # Pré-buildar a imagem
-    deploy:
-      replicas: 1
-      restart_policy:
-        condition: any
+    image: nginx:alpine
+    volumes:
+      - ./:/usr/share/nginx/html
     ports:
       - "20080:80"
+    restart: unless-stopped

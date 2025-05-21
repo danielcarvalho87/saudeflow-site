@@ -1,18 +1,9 @@
-version: "3.8"
+version: '3.8'
 
 services:
   web:
-    image: nginx:latest
+    build: .
+    container_name: site-saudeflow
+    restart: always
     ports:
-      - "20009:80"
-    volumes:
-      - ./site:/usr/share/nginx/html:ro
-    deploy:
-      restart_policy:
-        condition: any
-    networks:
-      - app_network
-
-networks:
-  app_network:
-    driver: overlay
+      - "20080:80"
